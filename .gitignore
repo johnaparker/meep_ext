@@ -1,0 +1,31 @@
+*.pyc
+*.sw*
+__pycache__
+todo.txt
+*.pdf
+*.png
+*.html
+
+# data files
+*.h5
+*.dat
+*.npy
+*.mp4
+
+# setup files
+build
+dist
+*.egg-info
+
+# vscode
+settings.json
+tags
+
+# latex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.gz
+*.bbl
+*.blg
