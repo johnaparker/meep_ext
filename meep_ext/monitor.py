@@ -1,5 +1,11 @@
 import meep
 
+def freq_data(fmin, fmax):
+    """get center frequency and df for given frequency range"""
+    fcen = (fmin + fmax)/2
+    df = abs(fmax - fmin)
+    return fcen, df
+
 def force_box_2d(position, size, component):
     """create 4 force planes (2D) to calculate the component of a force"""
     force_x1 = meep.ForceRegion(center=position - meep.Vector3(0,size[1]/2),
