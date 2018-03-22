@@ -1,7 +1,7 @@
 import numpy as np
 import meep
 
-eV_um_scale = 1/1.23984193
+eV_um_scale = 1/1.23984193*1e6
 
 def drude_lorentz_material(freq, gamma, sigma, eps_inf=1):
     """return a drude-lorentz material, where the first index is the Drude term"""
