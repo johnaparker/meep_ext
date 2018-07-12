@@ -6,4 +6,5 @@ from .material import (drude_lorentz_material, lorentz_material,
                     get_eps)
 
 from .source import (x_polarized_plane_wave, y_polarized_plane_wave,
-                     rhc_polarized_plane_wave, lhc_polarized_plane_wave)
+                     rhc_polarized_plane_wave, lhc_polarized_plane_wave,
+                     gaussian_beam, radial_beam, azimuthal_beam)
