@@ -1,5 +1,5 @@
 from .monitor import (add_force_box_2d, add_force_box, add_flux_plane, add_flux_box,
-                    freq_data)
+                    freq_data, add_near2far)
 
 from .material import (drude_lorentz_material, lorentz_material,
                     fit_drude_lorentz, single_freq_material,

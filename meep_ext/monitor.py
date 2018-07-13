@@ -129,3 +129,34 @@ def add_flux_box_2d(sim, fcen, df, nfreq, position, size):
     """add a flux box to a meep simulation"""
     box = flux_box_2d(position, size)
     return sim.add_flux(fcen, df, nfreq, *box)
+
+
+def near2far(position, size):
+    """create 6 near2far planes of a closed box with size and position"""
+    position = meep.Vector3(*position)
+    size = meep.Vector3(*size)
+
+    x1 = meep.Near2FarRegion(center=position - meep.Vector3(size[0]/2, 0, 0),
+                       size=meep.Vector3(0, size[1], size[2]), weight=-1)
+
+    x2 = meep.Near2FarRegion(center=position + meep.Vector3(size[0]/2, 0, 0),
+                       size=meep.Vector3(0, size[1], size[2]), weight=1)
+
+    y1 = meep.Near2FarRegion(center=position - meep.Vector3(0, size[1]/2, 0),
+                       size=meep.Vector3(size[0], 0, size[2]), weight=-1)
+
+    y2 = meep.Near2FarRegion(center=position + meep.Vector3(0, size[1]/2, 0),
+                       size=meep.Vector3(size[0], 0, size[2]), weight=1)
+
+    z1 = meep.Near2FarRegion(center=position - meep.Vector3(0, 0, size[2]/2),
+                       size=meep.Vector3(size[0], size[1], 0), weight=-1)
+
+    z2 = meep.Near2FarRegion(center=position + meep.Vector3(0, 0, size[2]/2),
+                            size=meep.Vector3(size[0], size[1], 0), weight=1)
+
+    return [x1, x2, y1, y2, z1, z2]
+
+def add_near2far(sim, fcen, df, nfreq, position, size):
+    """add a flux box to a meep simulation"""
+    box = near2far(position, size)
+    return sim.add_flux(fcen, df, nfreq, *box)
