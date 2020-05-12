@@ -95,10 +95,10 @@ def radial_beam(sim, src_time, width, amplitude=1.0):
     cell = sim.cell_size
 
     def amp_func_x(pos):
-        return gaussian_amp(pos, 500e-9)*pos.y
+        return gaussian_amp(pos, width)*pos.y
 
     def amp_func_y(pos):
-        return -gaussian_amp(pos, 500e-9)*pos.x
+        return -gaussian_amp(pos, width)*pos.x
 
     source = meep.Source(src_time,
                          component=meep.Hx,
